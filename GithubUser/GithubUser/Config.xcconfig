@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  GithubUser
+//
+//  Created by 김지나 on 2023/08/05.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+ClientId = "475a4655b3a9b8362060"
