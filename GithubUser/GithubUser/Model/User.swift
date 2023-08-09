@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct User {
-    var user: [User]
-    
-    var rowCount: Int {
-        return user.count
-    }
-    
-    init(user: [User]) {
-        self.user = user
-    }
+struct UserList: Codable {
+    let total_count: Int
+    let incomplete_results: Bool
+    let items: [User]
+}
+
+struct User: Codable {
+    let login: String
+    let avatar_url: String
+    let html_url: String
 }
