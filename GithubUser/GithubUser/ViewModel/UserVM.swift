@@ -14,7 +14,6 @@ import UIKit
 */
 
 class UserListVM {
-    var delegate: UserListVMDelegate?
     var isLastPage = false
     let perPage = 30
     var currentPage = -1
