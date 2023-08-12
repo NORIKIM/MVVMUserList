@@ -21,6 +21,11 @@ class UserPageVM {
         }
     }
     
+    func settingUserPage(by keyword: String?) {
+        freshPage(from: keyword)
+        settingCurrentPage()
+    }
+    
     func freshPage(from keyword: String?) {
         if keyword != nil && keyword != currentKeyword {
             currentPage = -1

@@ -21,8 +21,7 @@ class UserListVM {
     init() {}
     
     func requestUser(keyword: String?) {
-        userPage.freshPage(from: keyword)
-        userPage.settingCurrentPage()
+        userPage.settingUserPage(by: keyword)
         
         let isNeedRequest = userPage.isNeedRequest(with: keyword)
         
