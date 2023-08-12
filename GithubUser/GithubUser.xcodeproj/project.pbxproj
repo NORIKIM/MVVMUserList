@@ -31,6 +31,7 @@
 		252177682A817B3000B433D2 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252177672A817B3000B433D2 /* UserDefaultsKey.swift */; };
 		2521776A2A81809A00B433D2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252177692A81809A00B433D2 /* Service.swift */; };
 		252177922A8321FC00B433D2 /* UserCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252177912A8321FC00B433D2 /* UserCellVM.swift */; };
+		252177942A8758C500B433D2 /* UserPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252177932A8758C500B433D2 /* UserPageVM.swift */; };
 		380A8CA976175B426C4D9642 /* Pods_GithubUser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3F3187D133A31824DFD751 /* Pods_GithubUser.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		252177672A817B3000B433D2 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		252177692A81809A00B433D2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		252177912A8321FC00B433D2 /* UserCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellVM.swift; sourceTree = "<group>"; };
+		252177932A8758C500B433D2 /* UserPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageVM.swift; sourceTree = "<group>"; };
 		3B3F3187D133A31824DFD751 /* Pods_GithubUser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubUser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68A1C937682026072219BDC9 /* Pods-GithubUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubUser.debug.xcconfig"; path = "Target Support Files/Pods-GithubUser/Pods-GithubUser.debug.xcconfig"; sourceTree = "<group>"; };
 		F36B90D6C25675DA658805A2 /* Pods-GithubUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubUser.release.xcconfig"; path = "Target Support Files/Pods-GithubUser/Pods-GithubUser.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				2521773D2A7DB7A000B433D2 /* UserVM.swift */,
+				252177932A8758C500B433D2 /* UserPageVM.swift */,
 				252177912A8321FC00B433D2 /* UserCellVM.swift */,
 				252177582A8139B200B433D2 /* OAuthVM.swift */,
 			);
@@ -328,6 +331,7 @@
 				252177622A81641B00B433D2 /* ErrorMessage.swift in Sources */,
 				252177602A8163A400B433D2 /* KeyChainKey.swift in Sources */,
 				252177382A7D57C900B433D2 /* User.swift in Sources */,
+				252177942A8758C500B433D2 /* UserPageVM.swift in Sources */,
 				252177662A817B2100B433D2 /* Extension+UserDefaults.swift in Sources */,
 				252177572A81329700B433D2 /* OAuth.swift in Sources */,
 				2521774A2A7EBD6D00B433D2 /* Extension+Bundel.swift in Sources */,
