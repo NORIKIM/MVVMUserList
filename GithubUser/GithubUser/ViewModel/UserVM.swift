@@ -14,7 +14,6 @@ import UIKit
  class vs. struct https://showcove.medium.com/swift-struct-vs-class-1-68cf9cbf87ca
 */
 
-
 class UserListVM {
     var userPage = UserPageVM()
 
@@ -40,6 +39,14 @@ class UserListVM {
                     userPage.fetchUserList(userList: userList)
                 }
             }
+        }
+    }
+    
+    func reloadUser(keyword: String, completion: @escaping () -> ()) {
+        requestUser(keyword: keyword)
+        
+        userPage.reloadTableView = {
+            completion()
         }
     }
 }

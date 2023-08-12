@@ -75,12 +75,12 @@ class MainViewController: UIViewController {
     }
     
     func initViewModel(keyword: String) {
-        userListVM.requestUser(keyword: keyword)
-        
-        userListVM.reloadTableView = { [weak self] in
-            DispatchQueue.main.async {
-                self?.userTB.reloadData()
-                self?.isReload = false
+        userListVM.reloadUser(keyword: keyword) {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                
+                self.userTB.reloadData()
+                self.isReload = false
             }
         }
     }
