@@ -11,6 +11,7 @@ import UIKit
 /* 참고:
  MVVM 패턴 https://johncodeos.com/how-to-implement-mvvm-pattern-with-swift-in-ios/
  페이징 https://swieeft.github.io/2020/07/20/PagingTableView.html
+ class vs. struct https://showcove.medium.com/swift-struct-vs-class-1-68cf9cbf87ca
 */
 
 class UserListVM {

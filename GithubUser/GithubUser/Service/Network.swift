@@ -8,6 +8,15 @@
 import Foundation
 import Moya
 
+/*
+ OAuth, searchUser 참고
+ https://blog.aaronroh.org/107
+ https://docs.github.com/ko/rest/search/search?apiVersion=2022-11-28#search-users
+ https://docs.github.com/ko/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps
+ https://zeddios.tistory.com/1102
+ https://hilily.tistory.com/38
+ */
+
 enum Network {
     case accessToken(code: String)
     case user(keyword: String, page: Int)

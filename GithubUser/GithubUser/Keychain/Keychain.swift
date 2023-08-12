@@ -7,7 +7,11 @@
 
 import Foundation
 
-// 참고: https://mini-min-dev.tistory.com/114
+/*
+ 참고:
+ 키체인 https://mini-min-dev.tistory.com/114
+ api key 숨기기 https://nareunhagae.tistory.com/44
+ */
 
 protocol KeyChainDelegate {
     func didSignIn()
