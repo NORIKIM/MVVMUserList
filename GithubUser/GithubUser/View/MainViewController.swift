@@ -31,6 +31,11 @@ class MainViewController: UIViewController {
         $0.contentMode = .scaleAspectFit
         $0.image = UIImage(named: "no_result")
     }
+    var indicator = UIActivityIndicatorView().then {
+        $0.color = .orange
+        $0.hidesWhenStopped = true
+        $0.stopAnimating()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +53,7 @@ class MainViewController: UIViewController {
         self.view.addSubview(searchBar)
         self.view.addSubview(userTB)
         self.view.addSubview(noResultView)
+        self.view.addSubview(indicator)
         
         noResultView.isHidden = true
     }
@@ -72,16 +78,25 @@ class MainViewController: UIViewController {
             $0.trailing.equalTo(userTB.snp.trailing)
             $0.bottom.equalTo(userTB.snp.bottom)
         }
+        
+        indicator.snp.makeConstraints {
+            $0.centerX.equalTo(self.view.snp.centerX)
+            $0.centerY.equalTo(self.view.snp.centerY)
+        }
     }
     
     func reload(keyword: String) {
+        indicator.startAnimating()
+        
         userListVM.requestUser(keyword: keyword) { isSuccess in
             if isSuccess {
-                self.userTB.delegate = self
-                self.userTB.dataSource = self
-                self.userTB.reloadData()
+                DispatchQueue.main.async {
+                    self.userTB.delegate = self
+                    self.userTB.dataSource = self
+                    self.userTB.reloadData()
+                    self.indicator.stopAnimating()
+                }
             }
-            
         }
     }
 }
@@ -103,6 +118,8 @@ extension MainViewController {
     func loadMore() {
         let userCount = userListVM.getUsers().count
         pagingState = .normal
+        indicator.startAnimating()
+        
         userListVM.requestReloadUser {isSuccess in
             if isSuccess {
                 self.pagingState = .paging
@@ -117,6 +134,7 @@ extension MainViewController {
                     self.userTB.beginUpdates()
                     self.userTB.insertRows(at: indexPaths, with: .automatic)
                     self.userTB.endUpdates()
+                    self.indicator.stopAnimating()
                 }
                 
             }
@@ -156,7 +174,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = indexPath.section
+//        let section = indexPath.section
         
         guard let userCell = tableView.dequeueReusableCell(withIdentifier: UserCell.id, for: indexPath) as? UserCell else { return UITableViewCell() }
         let users = userListVM.getUsers()
