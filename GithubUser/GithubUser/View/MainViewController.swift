@@ -9,10 +9,14 @@ import UIKit
 import SnapKit
 import Then
 
+fileprivate enum PagingState {
+    case normal
+    case paging
+}
+
 class MainViewController: UIViewController {
     lazy var userListVM = { UserListVM() }()
-    var isPaging = false // 현재 페이징 중인지
-    var isReload = false // 새로운 검색어로 로드 하는 중인지
+    private var pagingState: PagingState = .paging
     
     var searchBar = UISearchBar().then {
         $0.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
@@ -36,10 +40,8 @@ class MainViewController: UIViewController {
         setConstraints()
         
         searchBar.delegate = self
-        userTB.delegate = self
-        userTB.dataSource = self
         
-        initViewModel(keyword: "Q")
+        reload(keyword: "q")
     }
     
     func setUI() {
@@ -48,7 +50,6 @@ class MainViewController: UIViewController {
         self.view.addSubview(noResultView)
         
         noResultView.isHidden = true
-//        userListVM.delegate = self
     }
     
     func setConstraints() {
@@ -71,17 +72,16 @@ class MainViewController: UIViewController {
             $0.trailing.equalTo(userTB.snp.trailing)
             $0.bottom.equalTo(userTB.snp.bottom)
         }
-        
     }
     
-    func initViewModel(keyword: String) {
-        userListVM.reloadUser(keyword: keyword) {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                
+    func reload(keyword: String) {
+        userListVM.requestUser(keyword: keyword) { isSuccess in
+            if isSuccess {
+                self.userTB.delegate = self
+                self.userTB.dataSource = self
                 self.userTB.reloadData()
-                self.isReload = false
             }
+            
         }
     }
 }
@@ -94,21 +94,33 @@ extension MainViewController {
         let height = scrollView.frame.height
         
         if offsetY > (contentHeight - height) {
-            if isPaging == false && isReload == false {
+            if pagingState == .paging {
                 loadMore()
             }
         }
     }
     
     func loadMore() {
-        isPaging = true
-        userListVM.requestUser(keyword: nil)
-        userListVM.reloadTableView = { [weak self] in
-            DispatchQueue.main.async {
-                self?.isPaging = false
-                self?.userTB.reloadData()
+        let userCount = userListVM.getUsers().count
+        pagingState = .normal
+        userListVM.requestReloadUser {isSuccess in
+            if isSuccess {
+                self.pagingState = .paging
+                var indexPaths = [IndexPath]()
+                
+                for row in userCount ... userCount + 29 {
+                    let indexPath = IndexPath(row: row, section: 0)
+                    indexPaths.append(indexPath)
+                }
+                
+                DispatchQueue.main.async {
+                    self.userTB.beginUpdates()
+                    self.userTB.insertRows(at: indexPaths, with: .automatic)
+                    self.userTB.endUpdates()
+                }
                 
             }
+            
         }
     }
 }
@@ -120,8 +132,7 @@ extension MainViewController: UISearchBarDelegate {
         
         let searchKeyword = searchBar.text ?? ""
         if searchKeyword != "" {
-            isReload = true
-            initViewModel(keyword: searchKeyword)
+            reload(keyword: searchKeyword)
         }
     }
 }
@@ -129,25 +140,27 @@ extension MainViewController: UISearchBarDelegate {
 // MARK: - TableView ---------------------------------------------------------------------------------------------------------------------------------------------------
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return userListVM.userCellVMs.count
-        }
-        if section == 1 && isPaging {
-            return 1
-        }
-        
-        return 0
+//        if section == 0 {
+            let users = userListVM.getUsers()
+            return users.count
+//        }
+//        if section == 1 && pagingState == .paging {
+//            return 1
+//        }
+//
+//        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
         
         guard let userCell = tableView.dequeueReusableCell(withIdentifier: UserCell.id, for: indexPath) as? UserCell else { return UITableViewCell() }
-        let CellVM = userListVM.getCellViewModel(at: indexPath)
+        let users = userListVM.getUsers()
+        let CellVM = userListVM.getUser(at: indexPath)
         userCell.userCellVM = CellVM
         
         return userCell
@@ -155,8 +168,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
-        let user = userListVM.userCellVMs
-        let url = user[index].url
+        let users = userListVM.getUsers()
+        let url = users[index].url
         
         if let githubURL = URL(string: url), UIApplication.shared.canOpenURL(githubURL) {
             UIApplication.shared.open(githubURL)
