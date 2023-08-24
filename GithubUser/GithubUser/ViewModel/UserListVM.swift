@@ -15,24 +15,31 @@ import UIKit
 */
 
 class UserListVM {
-    private var userPage = UserPageVM()
-    typealias callBack = (_ isSuccess:Bool) -> ()
+    private var userPage: UserPageVM!
+    typealias callBack = (_ isSuccess:Bool?) -> ()
     
     init() {}
     
     func requestUser(keyword: String, completion: @escaping callBack) {
-        Service.shared.requestUser(keyword: keyword, page: 1) { [weak self] result in
+        Service.shared.requestUser(keyword: keyword) { [weak self] result in
+            self?.userPage = UserPageVM()
             guard let userPage = self?.userPage else { return }
             
             if let searchResult = result {
                 let totalCount = searchResult.total_count
-                let page = totalCount / userPage.perPage
-                let userList = searchResult.items
                 
-                userPage.totalPage = page == 0 ? 1 : page
-                userPage.currentKeyword = keyword
-                userPage.fetchUserList(userList: userList)
-                completion(true)
+                if totalCount == 0 {
+                    completion(nil)
+                } else {
+                    let page = totalCount / userPage.perPage
+                    let userList = searchResult.items
+                    
+                    userPage.totalPage = page == 0 ? 1 : page
+                    userPage.currentKeyword = keyword
+                    userPage.fetchUserList(userList: userList)
+                    completion(true)
+                }
+                
             } else {
                 completion(false)
             }
@@ -61,5 +68,9 @@ class UserListVM {
     
     func getUser(at indexPath: IndexPath) -> UserCellVM {
         return userPage.getCellViewModel(at: indexPath)
+    }
+    
+    func isLastPage() -> Bool {
+        return userPage.isLastPage()
     }
 }
