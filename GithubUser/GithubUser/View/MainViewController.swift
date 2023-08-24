@@ -89,11 +89,15 @@ class MainViewController: UIViewController {
         indicator.startAnimating()
         
         userListVM.requestUser(keyword: keyword) { isSuccess in
-            if isSuccess {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                if isSuccess != nil && isSuccess == true {
+                    self.noResultView.isHidden = true
                     self.userTB.delegate = self
                     self.userTB.dataSource = self
                     self.userTB.reloadData()
+                    self.indicator.stopAnimating()
+                } else {
+                    self.noResultView.isHidden = false
                     self.indicator.stopAnimating()
                 }
             }
@@ -116,29 +120,32 @@ extension MainViewController {
     }
     
     func loadMore() {
-        let userCount = userListVM.getUsers().count
-        pagingState = .normal
-        indicator.startAnimating()
+        let isLastPage = userListVM.isLastPage()
         
-        userListVM.requestReloadUser {isSuccess in
-            if isSuccess {
-                self.pagingState = .paging
-                var indexPaths = [IndexPath]()
-                
-                for row in userCount ... userCount + 29 {
-                    let indexPath = IndexPath(row: row, section: 0)
-                    indexPaths.append(indexPath)
-                }
-                
-                DispatchQueue.main.async {
-                    self.userTB.beginUpdates()
-                    self.userTB.insertRows(at: indexPaths, with: .automatic)
-                    self.userTB.endUpdates()
-                    self.indicator.stopAnimating()
-                }
-                
-            }
+        if !isLastPage {
+            let userCount = userListVM.getUsers().count
+            pagingState = .normal
+            indicator.startAnimating()
             
+            userListVM.requestReloadUser {isSuccess in
+                if isSuccess != nil {
+                    self.pagingState = .paging
+                    var indexPaths = [IndexPath]()
+                    
+                    for row in userCount ... userCount + 29 {
+                        let indexPath = IndexPath(row: row, section: 0)
+                        indexPaths.append(indexPath)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.userTB.beginUpdates()
+                        self.userTB.insertRows(at: indexPaths, with: .automatic)
+                        self.userTB.endUpdates()
+                        self.indicator.stopAnimating()
+                    }
+                    
+                }
+            }
         }
     }
 }
