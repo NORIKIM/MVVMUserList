@@ -32,6 +32,7 @@
 		2521776A2A81809A00B433D2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252177692A81809A00B433D2 /* Service.swift */; };
 		252177922A8321FC00B433D2 /* UserCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252177912A8321FC00B433D2 /* UserCellVM.swift */; };
 		252177942A8758C500B433D2 /* UserPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252177932A8758C500B433D2 /* UserPageVM.swift */; };
+		252177962A974F7D00B433D2 /* userImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 252177952A974F7D00B433D2 /* userImg.png */; };
 		380A8CA976175B426C4D9642 /* Pods_GithubUser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3F3187D133A31824DFD751 /* Pods_GithubUser.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		252177692A81809A00B433D2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		252177912A8321FC00B433D2 /* UserCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellVM.swift; sourceTree = "<group>"; };
 		252177932A8758C500B433D2 /* UserPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageVM.swift; sourceTree = "<group>"; };
+		252177952A974F7D00B433D2 /* userImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userImg.png; sourceTree = "<group>"; };
 		3B3F3187D133A31824DFD751 /* Pods_GithubUser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubUser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68A1C937682026072219BDC9 /* Pods-GithubUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubUser.debug.xcconfig"; path = "Target Support Files/Pods-GithubUser/Pods-GithubUser.debug.xcconfig"; sourceTree = "<group>"; };
 		F36B90D6C25675DA658805A2 /* Pods-GithubUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubUser.release.xcconfig"; path = "Target Support Files/Pods-GithubUser/Pods-GithubUser.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				2521772B2A7D4C7A00B433D2 /* Assets.xcassets */,
 				252177302A7D4C7A00B433D2 /* Info.plist */,
 				252177452A7EBC0A00B433D2 /* UserInfo.plist */,
+				252177952A974F7D00B433D2 /* userImg.png */,
 				2521775E2A81637400B433D2 /* Constants */,
 				2521775B2A815F1D00B433D2 /* Keychain */,
 				2521775A2A815F0E00B433D2 /* Extension */,
@@ -272,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				252177962A974F7D00B433D2 /* userImg.png in Resources */,
 				2521772F2A7D4C7A00B433D2 /* LaunchScreen.storyboard in Resources */,
 				2521772C2A7D4C7A00B433D2 /* Assets.xcassets in Resources */,
 				252177462A7EBC0A00B433D2 /* UserInfo.plist in Resources */,
@@ -486,13 +490,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GQF9DRKKG2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GithubUser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -514,13 +519,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GQF9DRKKG2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GithubUser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

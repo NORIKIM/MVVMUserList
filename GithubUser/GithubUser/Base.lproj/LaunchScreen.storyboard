@@ -16,17 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_illuminarean2" translatesAutoresizingMaskIntoConstraints="NO" id="b4f-7A-YHY">
-                                <rect key="frame" x="20" y="59" width="353" height="759"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rex-KL-h9n">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.94509804249999996" green="0.96470588450000005" blue="0.99607843159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="b4f-7A-YHY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="boC-bQ-SrD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b4f-7A-YHY" secondAttribute="bottom" id="e2K-x2-hwr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b4f-7A-YHY" secondAttribute="trailing" constant="20" id="ejJ-GC-a2m"/>
-                            <constraint firstItem="b4f-7A-YHY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vrB-PP-qKQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Rex-KL-h9n" secondAttribute="bottom" id="6zH-V9-c5e"/>
+                            <constraint firstItem="Rex-KL-h9n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BRc-qF-ZCo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rex-KL-h9n" secondAttribute="trailing" id="mvt-Yi-YFe"/>
+                            <constraint firstItem="Rex-KL-h9n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rKN-Cs-1eU"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo_illuminarean2" width="613" height="360"/>
+        <image name="userImg.png" width="1024" height="1024"/>
     </resources>
 </document>
