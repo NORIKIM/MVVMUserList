@@ -14,7 +14,7 @@
 		2521772F2A7D4C7A00B433D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2521772D2A7D4C7A00B433D2 /* LaunchScreen.storyboard */; };
 		252177382A7D57C900B433D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252177372A7D57C900B433D2 /* User.swift */; };
 		2521773B2A7DA42400B433D2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521773A2A7DA42400B433D2 /* UserCell.swift */; };
-		2521773E2A7DB7A000B433D2 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521773D2A7DB7A000B433D2 /* UserVM.swift */; };
+		2521773E2A7DB7A000B433D2 /* UserListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521773D2A7DB7A000B433D2 /* UserListVM.swift */; };
 		252177462A7EBC0A00B433D2 /* UserInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 252177452A7EBC0A00B433D2 /* UserInfo.plist */; };
 		2521774A2A7EBD6D00B433D2 /* Extension+Bundel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252177492A7EBD6D00B433D2 /* Extension+Bundel.swift */; };
 		2521774C2A7F6BAD00B433D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521774B2A7F6BAD00B433D2 /* Network.swift */; };
@@ -45,7 +45,7 @@
 		252177302A7D4C7A00B433D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		252177372A7D57C900B433D2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2521773A2A7DA42400B433D2 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		2521773D2A7DB7A000B433D2 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
+		2521773D2A7DB7A000B433D2 /* UserListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVM.swift; sourceTree = "<group>"; };
 		252177452A7EBC0A00B433D2 /* UserInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserInfo.plist; sourceTree = "<group>"; };
 		252177492A7EBD6D00B433D2 /* Extension+Bundel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Bundel.swift"; sourceTree = "<group>"; };
 		2521774B2A7F6BAD00B433D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 		2521773C2A7DA8DD00B433D2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2521773D2A7DB7A000B433D2 /* UserVM.swift */,
+				2521773D2A7DB7A000B433D2 /* UserListVM.swift */,
 				252177932A8758C500B433D2 /* UserPageVM.swift */,
 				252177912A8321FC00B433D2 /* UserCellVM.swift */,
 				252177582A8139B200B433D2 /* OAuthVM.swift */,
@@ -345,7 +345,7 @@
 				252177232A7D4C7900B433D2 /* AppDelegate.swift in Sources */,
 				252177552A812A1100B433D2 /* MainCoordinator.swift in Sources */,
 				252177252A7D4C7900B433D2 /* SceneDelegate.swift in Sources */,
-				2521773E2A7DB7A000B433D2 /* UserVM.swift in Sources */,
+				2521773E2A7DB7A000B433D2 /* UserListVM.swift in Sources */,
 				2521776A2A81809A00B433D2 /* Service.swift in Sources */,
 				2521775D2A815F2800B433D2 /* Keychain.swift in Sources */,
 				252177682A817B3000B433D2 /* UserDefaultsKey.swift in Sources */,
