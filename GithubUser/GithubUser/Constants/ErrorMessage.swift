@@ -8,6 +8,9 @@
 import Foundation
 
 struct ErrorMessage {
+    // 네트워크
+    static let err = "에러가 발생했습니다."
+    
     // 키체인
     static let saveTokenFail = "토큰 저장에 실패했습니다."
     static let readTokenFail = "토큰을 읽어오는데 실패했습니다."
