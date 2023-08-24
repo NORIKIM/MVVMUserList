@@ -10,54 +10,16 @@ import UIKit
 class UserPageVM {
     // page
     let perPage = 30
-    var currentPage = -1
+    var currentPage = 1
     var totalPage = 1
     var currentKeyword = ""
+    var isLastPageFlag = false
     // page content
-    var reloadTableView: (() -> Void)?
-    var userCellVMs = [UserCellVM]() {
-        didSet {
-            reloadTableView?()
-        }
-    }
-    
-    func settingUserPage(by keyword: String?) {
-        freshPage(from: keyword)
-        settingCurrentPage()
-    }
-    
-    func freshPage(from keyword: String?) {
-        if keyword != nil && keyword != currentKeyword {
-            currentPage = -1
-            totalPage = 1
-            currentKeyword = keyword!
-            userCellVMs.removeAll()
-        }
-    }
-    
-    func settingCurrentPage() {
-        if currentPage < totalPage {
-            if currentPage == -1 {
-                currentPage = 1
-            } else {
-                currentPage += 1
-            }
-        }
-    }
+    var userCellVMs = [UserCellVM]()
     
     func isLastPage() -> Bool {
-        return currentPage == totalPage ? true : false
-    }
-    
-    func isNeedRequest(with keyword: String?) -> Bool {
-        /*
-           api 실행 조건
-         1. 최초
-         2. loadmore
-         3. 다른 검색어
-         4. 마지막 페이지가 아닐 때
-         */
-        return (currentKeyword == "Q" || keyword == nil || keyword != currentKeyword) && isLastPage() == false
+        isLastPageFlag = currentPage == totalPage ? true : false
+        return isLastPageFlag
     }
     
     func fetchUserList(userList:[User]) {
