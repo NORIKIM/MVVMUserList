@@ -1,6 +1,7 @@
 # UserList
 
 Github OpenAPI를 이용하여 User 리스트를 검색<br>
+<br>
 ● Github OAuth :
 https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps<br>
 ● OpenAPI : https://docs.github.com/en/rest/reference/search#search-users<br>
