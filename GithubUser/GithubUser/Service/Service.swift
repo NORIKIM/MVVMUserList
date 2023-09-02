@@ -34,6 +34,7 @@ struct Service {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                print(ErrorMessage.err)
                 completion(nil)
             }
         }
